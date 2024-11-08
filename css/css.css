@@ -1,0 +1,17 @@
+button#imageButton {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #1a73e8; /* Blå bakgrunn */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button#imageButton:hover {
+    background-color: #0c5cbd; /* Mørkere blå ved hover */
+}

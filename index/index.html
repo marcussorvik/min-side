@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcus sin side</title>
+    <link rel="stylesheet" href="css/css.css">
+    <style>
+        
+        .login-status-button {
+            background-color: #FF5733;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            text-align: center;
+            position: fixed;
+            top: 20px;
+            left: 20px; 
+        }
+
+        .login-status-button:hover {
+            background-color: #FF4500;
+        }
+
+       
+        .contact-section {
+            background-color: #FFFAF0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        
+        .profile-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            text-align: center;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .profile-container h3 {
+            cursor: pointer;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        .profile-details {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-container.expanded .profile-details {
+            display: block;
+        }
+
+       
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #4CAF50, #2196F3);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background-color: #333;
+            padding: 15px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #45a049;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        section h2 {
+            color: #4CAF50;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        section p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 30px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Marcus sin side</h1>
+    </header>
+
+    <nav>
+        <a href="bilder.html">Bilder</a>
+        <a href="om-meg.html">Om meg</a>
+        <a href="#" onclick="document.getElementById('contact-section').scrollIntoView(); return false;">Kontakt</a>
+    </nav>
+
+    
+    <button id="loginStatusBtn" class="login-status-button" onclick="toggleLoginStatus()">Logg inn</button>
+
+    <main>
+        <section>
+            <h2>Velkommen!</h2>
+            <p>Dette er Marcus sin nettside. Her kan du finne bilder og informasjon om meg. Jeg er en IT-student som er lidenskapelig opptatt av teknologi og programmering. Utforsk gjerne de ulike seksjonene for å lære mer om meg.</p>
+        </section>
+
+       
+        <div class="profile-container" id="profileContainer">
+            <h3 id="username" onclick="toggleProfile()">Klikk her for profil</h3>
+            <div class="profile-details" id="profileDetails">
+                <p><strong>Brukernavn:</strong> <span id="userNameDisplay">Ingen bruker</span></p>
+                <p><strong>E-post:</strong> <span id="userEmailDisplay">Ingen e-post</span></p>
+            </div>
+        </div>
+    </main>
+
+    <div class="contact-section" id="contact-section">
+        <h2>Kontakt meg</h2>
+        <p>Du kan kontakte meg via e-post: <strong>marcussorvik@outlook.com</strong></p>
+        <p>Fyll ut meldingen nedenfor for å sende en e-post:</p>
+        <textarea id="message" placeholder="Skriv din melding her..."></textarea>
+        <button onclick="sendMail()">Send</button>
+    </div>
+
+    <footer>
+        <p>Laget av meg</p>
+    </footer>
+
+    <script>
+        function sendMail() {
+            const message = document.getElementById("message").value;
+            if (message.trim() === "") {
+                alert("Vennligst skriv en melding før du sender.");
+            } else {
+                alert("Meldingen din er sendt! Takk for at du kontaktet meg.");
+                document.getElementById("message").value = "";
+            }
+        }
+
+        
+        function toggleLoginStatus() {
+            const isLoggedIn = localStorage.getItem("loggedIn");
+            const loginButton = document.getElementById("loginStatusBtn");
+
+            if (isLoggedIn) {
+                
+                localStorage.removeItem("loggedIn"); 
+                localStorage.removeItem("username");
+                localStorage.removeItem("email");
+                loginButton.textContent = "Logg inn";
+                alert("Du er nå logget ut.");
+                window.location.href = "login.html"; 
+            } else {
+                
+                window.location.href = "login.html";
+            }
+        }
+
+       
+        window.onload = function() {
+            const isLoggedIn = localStorage.getItem("loggedIn");
+            const loginButton = document.getElementById("loginStatusBtn");
+
+            if (isLoggedIn) {
+                loginButton.textContent = "Logg ut";
+                updateProfile();  
+            } else {
+                loginButton.textContent = "Logg inn";
+            }
+        }
+
+        
+        function updateProfile() {
+            const username = localStorage.getItem("username");
+            const email = localStorage.getItem("email");
+
+            if (username) {
+                document.getElementById("userNameDisplay").textContent = username;
+                document.getElementById("username").textContent = username;
+            }
+            if (email) {
+                document.getElementById("userEmailDisplay").textContent = email;
+            }
+        }
+
+        function toggleProfile() {
+            const profileContainer = document.getElementById("profileContainer");
+            profileContainer.classList.toggle("expanded");
+        }
+    </script>
+</body>
+</html>

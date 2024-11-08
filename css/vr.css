@@ -1,0 +1,62 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #1a1a1a; /* Mørk bakgrunn */
+    color: white; /* Hvit tekstfarge */
+}
+
+h1 {
+    text-align: center; /* Sentrer overskriften */
+    color: #f0f0f0; /* Lysere hvit for overskrift */
+}
+
+ul {
+    list-style-type: square; /* Endre listen til firkantede punkter */
+    padding-left: 20px; /* Legg til litt padding på venstre side av listen */
+}
+
+#chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    background-color: #222; /* Mørkere bakgrunn for chatbot */
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); /* Mørkere skygge */
+    border: 1px solid #444; /* Lysere kantlinje */
+}
+
+#chatbox {
+    height: 200px;
+    overflow-y: auto; /* Rull ned hvis innholdet er for stort */
+    margin-bottom: 20px;
+    background-color: #333; /* Mørk bakgrunn for chatboks */
+    border-radius: 5px; /* Rundede hjørner */
+    padding: 5px; /* Litt padding inni chatboks */
+}
+
+.user-message {
+    color: #00f; /* Blå farge for brukerens meldinger */
+    margin: 5px 0; /* Litt margin mellom meldingene */
+}
+
+.bot-message {
+    color: #0f0; /* Grønn farge for botens meldinger */
+    margin: 5px 0; /* Litt margin mellom meldingene */
+}
+
+input[type="text"] {
+    width: calc(100% - 20px); /* Fyller hele bredden */
+    padding: 10px;
+    border: none; /* Ingen kantlinje */
+    border-radius: 5px; /* Rundede hjørner */
+    background-color: #444; /* Mørkere bakgrunn for inndatafelt */
+    color: white; /* Hvit tekstfarge */
+}
+
+input[type="text"]:focus {
+    outline: none; /* Fjern standard fokus-ring */
+    background-color: #555; /* Lysere bakgrunn ved fokus */
+}
